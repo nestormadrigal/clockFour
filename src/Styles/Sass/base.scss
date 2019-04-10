@@ -1,0 +1,303 @@
+
+@import "./variables.scss";
+
+/* Layout and basic elements */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica,  Arial sans-serif;
+    background:  url("../Images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    margin: 0;
+    font-size: $font-lg;
+    font-weight: 600;
+    line-height: $font-lg;
+    color: $clr-purple;
+    letter-spacing: -1px;
+}
+
+h2 {
+    margin: 0;
+    font-size: $font-md + 4;
+    font-weight: 600;
+    line-height: $font-md;
+    color: $clr-black;
+    letter-spacing: -1px;
+}
+
+h3 {
+    margin: 0;
+    font-size: $font-md;
+    font-weight: 600;
+    line-height: $font-md;
+    color: $clr-purple;
+}
+
+h4 {
+    font-size: $font-sm;
+    font-weight: 600;
+    line-height: $font-sm;
+    color: $clr-purple;
+}
+
+p {
+    font-size: $font-xs;
+    font-weight: 500;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: 8px;
+        font-size: $font-xs + 1;
+    }
+}
+
+.main-wrapper {
+    padding: 0 50px;
+
+    .content-wrapper {
+        position: relative;
+        max-width: 1024px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: $clr-white;
+    }
+}
+
+.head-black {
+    color: $clr-black;
+}
+
+.arrow-box {
+	position: relative;
+	border: 4px solid transparent;
+
+    &:after, &:before {
+        bottom: 8px;
+        left: -5px;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-bottom-color: darken($clr-gray, 10%);
+        border-width: 5px;
+        transition: all 500ms ease;
+    }
+}
+
+
+/* Buttons */
+.btn {
+    position: relative;
+    min-width: 140px;
+    padding: 10px;
+    border-radius: 0;
+    border: none;
+    font-size: $font-sm;
+    color: $clr-white;
+    font-weight: 600;
+    background-color: transparent;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+
+    &.btn-primary {
+        background-color: $clr-blue;
+        color: $clr-white;
+        z-index: 2;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            background-color: darken($clr-blue, 10%);
+            z-index: -1;
+            -moz-transition: 400ms all;
+            -ms-transition: 400ms all;
+            -o-transition: 400ms all;
+            -webkit-transition: 400ms all;
+            transition: 400ms all;
+        }
+
+        &:hover:before {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &.btn-transparent {
+        color: $clr-darkgray;
+        background-color: transparent;
+
+        &:hover {
+            font-weight: 600;
+        }
+    }
+
+    &.btn-icon {
+        width: auto;
+        min-width: 0;
+        padding: 0 10px;
+        color: $clr-black;
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $clr-gray;
+    }
+}
+
+/* Banner header */
+.banner-header {
+    min-height: 370px;
+    background-color: #EFF2E1;
+    background-image: url("../Images/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: 450px 370px;
+}
+
+.summary-cards {
+    background-color: $clr-lightgray;
+
+    .card {
+        background: transparent;
+        border: 0 none;
+        
+        p {
+            margin-top: 10px;
+        }
+    }
+}
+
+.list-information {
+    .list-container {
+        padding-left: 50px;
+    }
+}
+
+.faq {
+    .accordion {
+        .card {
+            border: 0 none;
+
+            .card-header {
+                padding: 0 0 0 15px;
+                background-color: $clr-lightgray;
+                border: 0 none;
+                cursor: pointer;
+
+                h2 {
+                    button {
+                        color: $clr-black;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                &.collapsed {
+                    .arrow-box {
+                        &::before {
+                            transform: translateY(4px) rotate(180deg);
+                            transition: all 500ms ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    height: 300px;
+    background-color: $clr-black;
+
+    .footer-content {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 25px 20px;
+        
+        p {
+            color: $clr-white;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1190px) {
+    .banner-header {
+        .media {
+            .figure-img {
+                width: 200px;
+                height: 120px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        .main-wrapper {
+            padding: 0;
+
+            .content-wrapper {
+                padding: 10px 0;
+                background: none;
+
+                .banner-header {
+                    min-height: auto;
+                    margin-bottom: 75px;
+                    padding: 0 15px;
+                    text-align: center;
+                    background-image: none;
+                    background: rgba(226,234,240,1);
+                    background: -moz-linear-gradient(top, rgba(226,234,240,1) 0%, rgba(215,222,238,1) 100%);
+                    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,234,240,1)), color-stop(100%, rgba(215,222,238,1)));
+                    background: -webkit-linear-gradient(top, rgba(226,234,240,1) 0%, rgba(215,222,238,1) 100%);
+                    background: -o-linear-gradient(top, rgba(226,234,240,1) 0%, rgba(215,222,238,1) 100%);
+                    background: -ms-linear-gradient(top, rgba(226,234,240,1) 0%, rgba(215,222,238,1) 100%);
+                    background: linear-gradient(to bottom, rgba(226,234,240,1) 0%, rgba(215,222,238,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eaf0', endColorstr='#d7deee', GradientType=0 );
+
+                    
+                    .btn {
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        bottom: -50px;
+                    }
+            
+                }
+
+                .list-information {
+                    .list-container {
+                        padding-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
